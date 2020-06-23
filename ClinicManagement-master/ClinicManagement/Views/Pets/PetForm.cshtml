@@ -1,0 +1,112 @@
+﻿@model ClinicManagement.Core.ViewModel.PetFormViewModel
+@{
+    ViewBag.Title = Model.Heading;
+}
+<div class="row ">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+
+        <div class="x_panel">
+            <div class="x_content">
+                @using (Html.BeginForm(Model.Action, "Pet", FormMethod.Post, new { @class = "form-horizontal form-label-left", autocomplete = "off" }))
+                {
+
+
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.Id)
+
+                    <span class="section">Adauga animal</span>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Proprietar <span class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12"> 
+                            @Html.TextBoxFor(m => m.OwnerName, new { @class = "form-control col-md-7 col-xs-12", autofocus="true" })
+                            @Html.ValidationMessageFor(m => m.OwnerName)
+                        </div>
+                    </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Sex <span class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.DropDownListFor(m => m.Sex, Model.GendersList, new { @class = "form-control col-md-7 col-xs-12" })
+                                @Html.ValidationMessageFor(m => m.Sex)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Varsta <span class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.Age, new { @class = "form-control col-md-7 col-xs-12" })
+                                @Html.ValidationMessageFor(m => m.Age)
+                            </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Greutate</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.Weight, new { @class = "form-control col-md-7 col-xs-12" })
+                                @Html.ValidationMessageFor(m => m.Weight)
+                            </div>
+                        </div>
+
+                        <div class=" form-group">
+                            <label class="control-label col-sm-3 col-xs-12">Telefon <span class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control col-md-7 col-xs-12" })
+                                @Html.ValidationMessageFor(m => m.Phone)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Address <span class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.Address, new { @class = "form-control col-md-7 col-xs-12" })
+                                @Html.ValidationMessageFor(m => m.Address)
+                            </div>
+                        </div>
+
+                        <div class=" form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Specie <span class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.DropDownListFor(m => m.Type, new SelectList(Model.animalTypes, "Id", "Type"), "Select", new { @class = "form-control col-md-7 col-xs-12" })
+                                @Html.ValidationMessageFor(m => m.Type)
+                            </div>
+                        </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
+                                    <button type="submit" class="btn btn-success">Save</button>
+                                </div>
+                            </div>
+
+                }
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy',
+                //clearBtn: true,
+                todayHighlight: true,
+                //todayBtn: true,
+                //todayBtn: 'linked',
+                orientation: "top left",
+                autoclose: true
+            });
+
+        });
+    </script>
+
+}
+
+
+
+
+

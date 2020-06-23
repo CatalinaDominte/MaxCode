@@ -1,0 +1,20 @@
+﻿<ul class="nav side-menu">
+    <li>
+        <a href="/"><i class="fa fa-home"></i> Dashboard </a>
+    </li>
+    <li><a href="@Url.Action("Index","Pets")"><i class="fa fa-edit"></i> Consultatii animale</a></li>
+    <li><a href="@Url.Action("Index","Appointments")"><i class="fa fa-edit"></i> Programari</a></li>
+    <li><a href="@Url.Action("Index","Doctors")"><i class="fa fa-edit"></i> Doctori</a></li>
+    <li> <a href="@Url.Action("Index","Account")"><i class="fa fa-edit"></i> Utilizatori </a> </li>
+
+    <li>
+        <a><i class="fa fa-bar-chart-o"></i> Report <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+            <li><a href="@Url.Action("DaillyAppointments","Reports")">Programari zilnice </a></li>
+            <li><a href="@Url.Action("Appointments","Reports")">Programari </a></li>
+            <li><a href="@Url.Action("Attandences","Reports")">Consultatie </a></li>
+
+        </ul>
+    </li>
+</ul>
+
